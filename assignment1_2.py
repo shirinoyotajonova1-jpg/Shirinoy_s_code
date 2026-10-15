@@ -22,8 +22,7 @@ student_discount_amount = subtotal_before_discounts * 0.15 if is_student_elgible
 is_happy_hour_eligible = 14 <=order_time <= 17
 happy_hour_discount_amount =subtotal_before_discounts * 0.20 if is_happy_houreligbile esle 0.0
 #Non-stacking Main Discount calculation using given formula:
-#main_discount = (student_discountamount * (student_discount_amount >= happy_hour_discount_amount) +
-                  happy_hour_discount_amount * (happy_hour_discount_amount > student_discount_amount))
+main_discount = (student_discountamount * (student_discount_amount >= happy_hour_discount_amount) + happy_hour_discount_amount * (happy_hour_discount_amount > student_discount_amount))
    #Determine which discount was applied for display
                   if main_discount > 0:
                     if student_discount_amount >= happy_hour_discount_amount:
@@ -41,9 +40,7 @@ total_disconts =main_discounts+large_order_discount_amount
 subtotal_after_discounts =subtotal_before_discounts - total_disconts
 
 #5. Other Calculations
-#Service_charge =subtotal_after_discounts * 0.10
-#Delivery fee calculation using given formula:
-#delivery =(subtotal >= 10000) * 15000
+
 delivery_fee =int(subtotal_before_discounts >= 100000) * 15000
 is_free_delivery = delivery_fee == 0
 
